@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="environment.props" Condition="Exists('environment.props')" />
+
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<LangVersion>10.0</LangVersion>
+		<AssemblyName>BreedingUpgrades</AssemblyName>
+		<RootNamespace>BreedingUpgrades</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="BepInEx">
+			<HintPath>$(BEPINEX_PATH)/core/BepInEx.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="0Harmony">
+			<HintPath>$(BEPINEX_PATH)/core/0Harmony.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="assembly_valheim">
+			<HintPath>$(VALHEIM_MANAGED)/publicized_assemblies/assembly_valheim_publicized.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="assembly_utils">
+			<HintPath>$(VALHEIM_MANAGED)/publicized_assemblies/assembly_utils_publicized.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="UnityEngine">
+			<HintPath>$(VALHEIM_MANAGED)/UnityEngine.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="UnityEngine.CoreModule">
+			<HintPath>$(VALHEIM_MANAGED)/UnityEngine.CoreModule.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="Unity.TextMeshPro">
+			<HintPath>$(VALHEIM_MANAGED)/Unity.TextMeshPro.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>$(VALHEIM_MANAGED)/UnityEngine.UI.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+		<Reference Include="Jotunn">
+			<HintPath>$(BEPINEX_PATH)/plugins/ValheimModding-Jotunn/Jotunn.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+		</Reference>
+	</ItemGroup>
+</Project>
