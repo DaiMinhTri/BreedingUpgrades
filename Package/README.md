@@ -25,8 +25,8 @@ Configuration is locked by default and synced from the server using embedded Ser
 ### Breeding Limits (On by Default)
 Configurable population cap per species. When enabled, breeding stops when the species limit is reached nearby. Supports Boars, Wolves, Lox, Chickens, Moose, and Asksvin.
 
-### Config Hot-Reload
-Edit the `.cfg` file while the game is running — changes are picked up automatically without restarting.
+### Search Radius
+Per-species control over how far the mod checks for nearby creatures when counting population and finding mates. Both the population check range and partner check range can be configured independently per species.
 
 ### Console Commands
 | Command | Description |
@@ -52,6 +52,18 @@ A configuration file is generated at `BepInEx/config/DMT.breedingupgrades.cfg` a
 | Breeding Limits | Max Chickens | 5 | Max chickens nearby before breeding stops (3-20) |
 | Breeding Limits | Max Moose | 5 | Max moose nearby before breeding stops (3-20) |
 | Breeding Limits | Max Asksvin | 5 | Max asksvin nearby before breeding stops (3-20) |
+| Search Radius | Population Check Range - Boar | 20 | Radius (m) to count nearby boars for population cap (5-50, vanilla 10) |
+| Search Radius | Population Check Range - Wolf | 20 | Radius (m) to count nearby wolves for population cap (5-50, vanilla 10) |
+| Search Radius | Population Check Range - Lox | 20 | Radius (m) to count nearby lox for population cap (5-50, vanilla 10) |
+| Search Radius | Population Check Range - Chicken | 20 | Radius (m) to count nearby chickens for population cap (5-50, vanilla 10) |
+| Search Radius | Population Check Range - Moose | 20 | Radius (m) to count nearby moose for population cap (5-50, vanilla 10) |
+| Search Radius | Population Check Range - Asksvin | 20 | Radius (m) to count nearby asksvin for population cap (5-50, vanilla 10) |
+| Search Radius | Partner Check Range - Boar | 6 | Radius (m) to find a partner for boars (1-15, vanilla 3) |
+| Search Radius | Partner Check Range - Wolf | 6 | Radius (m) to find a partner for wolves (1-15, vanilla 3) |
+| Search Radius | Partner Check Range - Lox | 6 | Radius (m) to find a partner for lox (1-15, vanilla 3) |
+| Search Radius | Partner Check Range - Chicken | 6 | Radius (m) to find a partner for chickens (1-15, vanilla 3) |
+| Search Radius | Partner Check Range - Moose | 6 | Radius (m) to find a partner for moose (1-15, vanilla 3) |
+| Search Radius | Partner Check Range - Asksvin | 6 | Radius (m) to find a partner for asksvin (1-15, vanilla 3) |
 | Debug | Enable Debug Logging | Off | Verbose logging for troubleshooting (not synced) |
 
 > **Note:** Max Star Level above 2 requires [CLLC](https://valheim.thunderstore.io/package/JavaJarred/Creature_Level_And_Loot_Control/) or a similar creature level mod. Without it, upgrades will cap at 2 stars (vanilla limit).
@@ -87,6 +99,11 @@ Rare traits (speed, health, damage) beyond stars. Creatures can inherit mutation
 If you enjoy this mod, consider buying me a coffee: [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-daiminhtri-yellow)](https://buymeacoffee.com/daiminhtri)
 
 ## Changelog
+
+### 1.0.5
+- Added per-species search radius configuration (Population Check Range and Partner Check Range)
+- Updated to latest standalone ServerSync (single file, compression, fragmentation)
+- Expanded `breeding_info` console command to display all config parameters
 
 ### 1.0.4
 - Added configurable breeding limits per species (Boars, Wolves, Lox, Chickens, Moose, Asksvin)

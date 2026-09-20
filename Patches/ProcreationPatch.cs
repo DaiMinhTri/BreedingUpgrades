@@ -37,7 +37,9 @@ public static class ProcreationPatch
 			{
 				int maxCreatures = BreedingUpgradesPlugin.GetMaxCreatures(species);
 				__instance.m_maxCreatures = maxCreatures;
-				BreedingUpgradesPlugin.LogDebug($"Breeding limit applied: {species} max {maxCreatures}");
+				__instance.m_totalCheckRange = BreedingUpgradesPlugin.GetPopulationCheckRange(species);
+				__instance.m_partnerCheckRange = BreedingUpgradesPlugin.GetPartnerCheckRange(species);
+				BreedingUpgradesPlugin.LogDebug($"Breeding limit applied: {species} max {maxCreatures}, pop range {__instance.m_totalCheckRange}m, partner range {__instance.m_partnerCheckRange}m");
 			}
 		}
 	}

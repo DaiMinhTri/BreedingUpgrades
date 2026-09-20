@@ -1,6 +1,11 @@
 # Changelog
 
 
+## 1.0.5
+- Added per-species search radius configuration (Population Check Range and Partner Check Range)
+- Updated to latest standalone ServerSync (single file, compression, fragmentation)
+- Expanded `breeding_info` console command to display all config parameters
+
 ## 1.0.4
 - Added configurable breeding limits per species (Boars, Wolves, Lox, Chickens, Moose, Asksvin)
 - Switched config sync to embedded ServerSync (v1.0.12)

@@ -1,6 +1,6 @@
 {
   "name": "BreedingUpgrades",
-  "version_number": "1.0.4",
+  "version_number": "1.0.5",
   "website_url": "https://github.com/DaiMinhTri/BreedingUpgrades",
   "description": "Gives offspring of your tamed creatures a rare chance to spawn with an extra star.",
   "dependencies": [

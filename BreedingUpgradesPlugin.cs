@@ -7,14 +7,14 @@ using ServerSync;
 
 namespace BreedingUpgrades;
 
-[BepInPlugin("DMT.breedingupgrades", "BreedingUpgrades", "1.0.4")]
+[BepInPlugin("DMT.breedingupgrades", "BreedingUpgrades", "1.0.5")]
 public class BreedingUpgradesPlugin : BaseUnityPlugin
 {
 	public const string PLUGIN_GUID = "DMT.breedingupgrades";
 
 	public const string PLUGIN_NAME = "BreedingUpgrades";
 
-	public const string PLUGIN_VERSION = "1.0.4";
+	public const string PLUGIN_VERSION = "1.0.5";
 
 	private static BreedingUpgradesPlugin instance;
 
@@ -42,6 +42,10 @@ public class BreedingUpgradesPlugin : BaseUnityPlugin
 	public static ConfigEntry<bool> EnableBreedingLimit { get; private set; }
 
 	public static Dictionary<string, ConfigEntry<int>> MaxCreaturesPerSpecies { get; private set; } = new Dictionary<string, ConfigEntry<int>>();
+
+	public static Dictionary<string, ConfigEntry<int>> PopulationCheckRange { get; private set; } = new Dictionary<string, ConfigEntry<int>>();
+
+	public static Dictionary<string, ConfigEntry<int>> PartnerCheckRange { get; private set; } = new Dictionary<string, ConfigEntry<int>>();
 
 	private void Awake()
 	{
@@ -92,6 +96,20 @@ public class BreedingUpgradesPlugin : BaseUnityPlugin
 		MaxCreaturesPerSpecies["Moose"] = config("3. Breeding Limits", "Max Moose", 5, new ConfigDescription("Max moose nearby before breeding stops. Vanilla is about 4.", new AcceptableValueRange<int>(3, 20)));
 		MaxCreaturesPerSpecies["Asksvin"] = config("3. Breeding Limits", "Max Asksvin", 5, new ConfigDescription("Max asksvin nearby before breeding stops. Vanilla is about 4.", new AcceptableValueRange<int>(3, 20)));
 
+		PopulationCheckRange["Boar"] = config("5. Search Radius", "Population Check Range - Boar", 20, new ConfigDescription("Radius (meters) to count nearby boars for population cap. Vanilla is 10.", new AcceptableValueRange<int>(5, 50)));
+		PopulationCheckRange["Wolf"] = config("5. Search Radius", "Population Check Range - Wolf", 20, new ConfigDescription("Radius (meters) to count nearby wolves for population cap. Vanilla is 10.", new AcceptableValueRange<int>(5, 50)));
+		PopulationCheckRange["Lox"] = config("5. Search Radius", "Population Check Range - Lox", 20, new ConfigDescription("Radius (meters) to count nearby lox for population cap. Vanilla is 10.", new AcceptableValueRange<int>(5, 50)));
+		PopulationCheckRange["Chicken"] = config("5. Search Radius", "Population Check Range - Chicken", 20, new ConfigDescription("Radius (meters) to count nearby chickens for population cap. Vanilla is 10.", new AcceptableValueRange<int>(5, 50)));
+		PopulationCheckRange["Moose"] = config("5. Search Radius", "Population Check Range - Moose", 20, new ConfigDescription("Radius (meters) to count nearby moose for population cap. Vanilla is 10.", new AcceptableValueRange<int>(5, 50)));
+		PopulationCheckRange["Asksvin"] = config("5. Search Radius", "Population Check Range - Asksvin", 20, new ConfigDescription("Radius (meters) to count nearby asksvin for population cap. Vanilla is 10.", new AcceptableValueRange<int>(5, 50)));
+
+		PartnerCheckRange["Boar"] = config("5. Search Radius", "Partner Check Range - Boar", 6, new ConfigDescription("Radius (meters) to find a partner for boars. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
+		PartnerCheckRange["Wolf"] = config("5. Search Radius", "Partner Check Range - Wolf", 6, new ConfigDescription("Radius (meters) to find a partner for wolves. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
+		PartnerCheckRange["Lox"] = config("5. Search Radius", "Partner Check Range - Lox", 6, new ConfigDescription("Radius (meters) to find a partner for lox. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
+		PartnerCheckRange["Chicken"] = config("5. Search Radius", "Partner Check Range - Chicken", 6, new ConfigDescription("Radius (meters) to find a partner for chickens. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
+		PartnerCheckRange["Moose"] = config("5. Search Radius", "Partner Check Range - Moose", 6, new ConfigDescription("Radius (meters) to find a partner for moose. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
+		PartnerCheckRange["Asksvin"] = config("5. Search Radius", "Partner Check Range - Asksvin", 6, new ConfigDescription("Radius (meters) to find a partner for asksvin. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
+
 		DebugLogging = config("4. Debug", "Enable Debug Logging", false, new ConfigDescription("Enable verbose logging for troubleshooting."), synchronizedSetting: false);
 		DebugLogging.SettingChanged += (_, _) => { LogInfo("Debug logging toggled."); };
 	}
@@ -138,5 +156,23 @@ public class BreedingUpgradesPlugin : BaseUnityPlugin
 			return entry.Value;
 		}
 		return 5;
+	}
+
+	public static int GetPopulationCheckRange(string species)
+	{
+		if (PopulationCheckRange.TryGetValue(species, out var entry))
+		{
+			return entry.Value;
+		}
+		return 20;
+	}
+
+	public static int GetPartnerCheckRange(string species)
+	{
+		if (PartnerCheckRange.TryGetValue(species, out var entry))
+		{
+			return entry.Value;
+		}
+		return 6;
 	}
 }

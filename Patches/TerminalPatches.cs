@@ -60,6 +60,17 @@ public static class TerminalPatches
 		Console.instance.Print($"Effective Max Level: {LevelCalculator.GetEffectiveMaxLevel()}");
 		Console.instance.Print("Level Mod Detected: " + ModDetection.GetDetectedLevelMod());
 		Console.instance.Print("Debug Logging: " + (BreedingUpgradesPlugin.DebugLogging.Value ? "ON" : "OFF"));
+		Console.instance.Print("--- Breeding Limits ---");
+		Console.instance.Print($"Breeding Limit: {(BreedingUpgradesPlugin.EnableBreedingLimit.Value ? "Enabled" : "Disabled")}");
+		Console.instance.Print($"  Boar: {BreedingUpgradesPlugin.GetMaxCreatures("Boar")} | Wolf: {BreedingUpgradesPlugin.GetMaxCreatures("Wolf")} | Lox: {BreedingUpgradesPlugin.GetMaxCreatures("Lox")}");
+		Console.instance.Print($"  Chicken: {BreedingUpgradesPlugin.GetMaxCreatures("Chicken")} | Moose: {BreedingUpgradesPlugin.GetMaxCreatures("Moose")} | Asksvin: {BreedingUpgradesPlugin.GetMaxCreatures("Asksvin")}");
+		Console.instance.Print("--- Search Radius ---");
+		Console.instance.Print("  Population Check Range:");
+		Console.instance.Print($"    Boar: {BreedingUpgradesPlugin.GetPopulationCheckRange("Boar")}m | Wolf: {BreedingUpgradesPlugin.GetPopulationCheckRange("Wolf")}m | Lox: {BreedingUpgradesPlugin.GetPopulationCheckRange("Lox")}m");
+		Console.instance.Print($"    Chicken: {BreedingUpgradesPlugin.GetPopulationCheckRange("Chicken")}m | Moose: {BreedingUpgradesPlugin.GetPopulationCheckRange("Moose")}m | Asksvin: {BreedingUpgradesPlugin.GetPopulationCheckRange("Asksvin")}m");
+		Console.instance.Print("  Partner Check Range:");
+		Console.instance.Print($"    Boar: {BreedingUpgradesPlugin.GetPartnerCheckRange("Boar")}m | Wolf: {BreedingUpgradesPlugin.GetPartnerCheckRange("Wolf")}m | Lox: {BreedingUpgradesPlugin.GetPartnerCheckRange("Lox")}m");
+		Console.instance.Print($"    Chicken: {BreedingUpgradesPlugin.GetPartnerCheckRange("Chicken")}m | Moose: {BreedingUpgradesPlugin.GetPartnerCheckRange("Moose")}m | Asksvin: {BreedingUpgradesPlugin.GetPartnerCheckRange("Asksvin")}m");
 		Console.instance.Print("=============================");
 	}
 
