@@ -71,6 +71,14 @@ public static class TerminalPatches
 		Console.instance.Print("  Partner Check Range:");
 		Console.instance.Print($"    Boar: {BreedingUpgradesPlugin.GetPartnerCheckRange("Boar")}m | Wolf: {BreedingUpgradesPlugin.GetPartnerCheckRange("Wolf")}m | Lox: {BreedingUpgradesPlugin.GetPartnerCheckRange("Lox")}m");
 		Console.instance.Print($"    Chicken: {BreedingUpgradesPlugin.GetPartnerCheckRange("Chicken")}m | Moose: {BreedingUpgradesPlugin.GetPartnerCheckRange("Moose")}m | Asksvin: {BreedingUpgradesPlugin.GetPartnerCheckRange("Asksvin")}m");
+		Console.instance.Print("--- Traits ---");
+		Console.instance.Print($"Size Trait: {(BreedingUpgradesPlugin.EnableSizeTrait.Value ? "Enabled" : "Disabled")}");
+		if (BreedingUpgradesPlugin.EnableSizeTrait.Value)
+		{
+			Console.instance.Print($"  Range: {BreedingUpgradesPlugin.SizeTraitMin.Value}%-{BreedingUpgradesPlugin.SizeTraitMax.Value}%");
+			Console.instance.Print($"  Inheritance Variance: {BreedingUpgradesPlugin.SizeTraitVariance.Value}%");
+			Console.instance.Print($"  Mutation Chance: {BreedingUpgradesPlugin.SizeTraitMutationChance.Value}%");
+		}
 		Console.instance.Print("=============================");
 	}
 

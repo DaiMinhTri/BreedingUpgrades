@@ -28,6 +28,9 @@ Configurable population cap per species. When enabled, breeding stops when the s
 ### Search Radius
 Per-species control over how far the mod checks for nearby creatures when counting population and finding mates. Both the population check range and partner check range can be configured independently per species.
 
+### Size Trait (On by Default)
+Tamed creatures get a random size multiplier. Offspring inherit size from both parents with configurable variance and mutation chance. Breeding smaller parents tends to produce smaller offspring, and vice versa.
+
 ### Console Commands
 | Command | Description |
 |---------|-------------|
@@ -64,6 +67,11 @@ A configuration file is generated at `BepInEx/config/DMT.breedingupgrades.cfg` a
 | Search Radius | Partner Check Range - Chicken | 6 | Radius (m) to find a partner for chickens (1-15, vanilla 3) |
 | Search Radius | Partner Check Range - Moose | 6 | Radius (m) to find a partner for moose (1-15, vanilla 3) |
 | Search Radius | Partner Check Range - Asksvin | 6 | Radius (m) to find a partner for asksvin (1-15, vanilla 3) |
+| Traits | Enable Size Trait | On | Enable size trait for tamed creatures |
+| Traits | Size Trait Min | 50 | Minimum size multiplier as percentage (25-100) |
+| Traits | Size Trait Max | 200 | Maximum size multiplier as percentage (100-300) |
+| Traits | Inheritance Variance | 10 | Random variance when inheriting size from parents (0-50%) |
+| Traits | Mutation Chance | 10 | Chance for a size mutation on birth (0-100%) |
 | Debug | Enable Debug Logging | Off | Verbose logging for troubleshooting (not synced) |
 
 > **Note:** Max Star Level above 2 requires [CLLC](https://valheim.thunderstore.io/package/JavaJarred/Creature_Level_And_Loot_Control/) or a similar creature level mod. Without it, upgrades will cap at 2 stars (vanilla limit).
@@ -99,6 +107,10 @@ Rare traits (speed, health, damage) beyond stars. Creatures can inherit mutation
 If you enjoy this mod, consider buying me a coffee: [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-daiminhtri-yellow)](https://buymeacoffee.com/daiminhtri)
 
 ## Changelog
+
+### 1.0.6
+- Added Size Trait system — tamed creatures get a random size, offspring inherit size from both parents with variance and mutation
+- Configurable size range (50%-200%), inheritance variance (0%-50%), mutation chance (0%-100%)
 
 ### 1.0.5
 - Added per-species search radius configuration (Population Check Range and Partner Check Range)

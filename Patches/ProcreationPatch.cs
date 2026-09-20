@@ -28,6 +28,18 @@ public static class ProcreationPatch
 		ProcreationContext.IsInProcreation = true;
 		Character component = __instance.GetComponent<Character>();
 		ProcreationContext.ParentLevel = ((component == null) ? 1 : component.GetLevel());
+		ProcreationContext.ParentA = component != null ? component.gameObject : null;
+		ProcreationContext.ParentB = null;
+
+		if (__instance.m_seperatePartner != null)
+		{
+			ProcreationContext.ParentB = __instance.m_seperatePartner;
+		}
+		else if (component != null)
+		{
+			ProcreationContext.ParentB = component.gameObject;
+		}
+
 		BreedingUpgradesPlugin.LogDebug($"Procreation started - Parent level: {ProcreationContext.ParentLevel}");
 
 		if (BreedingUpgradesPlugin.EnableBreedingLimit.Value && component != null)
@@ -61,6 +73,8 @@ public static class ProcreationPatch
 	public static void Postfix()
 	{
 		ProcreationContext.IsInProcreation = false;
+		ProcreationContext.ParentA = null;
+		ProcreationContext.ParentB = null;
 		BreedingUpgradesPlugin.LogDebug("Procreation ended");
 	}
 

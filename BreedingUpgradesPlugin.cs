@@ -7,14 +7,14 @@ using ServerSync;
 
 namespace BreedingUpgrades;
 
-[BepInPlugin("DMT.breedingupgrades", "BreedingUpgrades", "1.0.5")]
+[BepInPlugin("DMT.breedingupgrades", "BreedingUpgrades", "1.0.6")]
 public class BreedingUpgradesPlugin : BaseUnityPlugin
 {
 	public const string PLUGIN_GUID = "DMT.breedingupgrades";
 
 	public const string PLUGIN_NAME = "BreedingUpgrades";
 
-	public const string PLUGIN_VERSION = "1.0.5";
+	public const string PLUGIN_VERSION = "1.0.6";
 
 	private static BreedingUpgradesPlugin instance;
 
@@ -47,6 +47,16 @@ public class BreedingUpgradesPlugin : BaseUnityPlugin
 
 	public static Dictionary<string, ConfigEntry<int>> PartnerCheckRange { get; private set; } = new Dictionary<string, ConfigEntry<int>>();
 
+	public static ConfigEntry<bool> EnableSizeTrait { get; private set; }
+
+	public static ConfigEntry<int> SizeTraitMin { get; private set; }
+
+	public static ConfigEntry<int> SizeTraitMax { get; private set; }
+
+	public static ConfigEntry<int> SizeTraitVariance { get; private set; }
+
+	public static ConfigEntry<int> SizeTraitMutationChance { get; private set; }
+
 	private void Awake()
 	{
 		instance = this;
@@ -58,6 +68,7 @@ public class BreedingUpgradesPlugin : BaseUnityPlugin
 		LogInfo("BreedingUpgrades v" + PLUGIN_VERSION + " loaded successfully.");
 		LogInfo($"Upgrade Chance: {UpgradeChance.Value}%, Max Stars: {MaxStarLevel.Value}");
 		LogInfo($"Breeding Limit: {(EnableBreedingLimit.Value ? "Enabled" : "Disabled")}");
+		LogInfo($"Size Trait: {(EnableSizeTrait.Value ? $"Enabled ({SizeTraitMin.Value}%-{SizeTraitMax.Value}%)" : "Disabled")}");
 	}
 
 	private void OnDestroy()
@@ -109,6 +120,16 @@ public class BreedingUpgradesPlugin : BaseUnityPlugin
 		PartnerCheckRange["Chicken"] = config("5. Search Radius", "Partner Check Range - Chicken", 6, new ConfigDescription("Radius (meters) to find a partner for chickens. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
 		PartnerCheckRange["Moose"] = config("5. Search Radius", "Partner Check Range - Moose", 6, new ConfigDescription("Radius (meters) to find a partner for moose. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
 		PartnerCheckRange["Asksvin"] = config("5. Search Radius", "Partner Check Range - Asksvin", 6, new ConfigDescription("Radius (meters) to find a partner for asksvin. Vanilla is 3.", new AcceptableValueRange<int>(1, 15)));
+
+		EnableSizeTrait = config("6. Traits", "Enable Size Trait", true, new ConfigDescription("Enable size trait for tamed creatures. Offspring inherit size from parents with variance."));
+		EnableSizeTrait.SettingChanged += (_, _) => { LogInfo("Size trait toggled."); };
+
+		SizeTraitMin = config("6. Traits", "Size Trait Min", 50, new ConfigDescription("Minimum size multiplier as percentage (50 = 0.5x).", new AcceptableValueRange<int>(25, 100)));
+		SizeTraitMax = config("6. Traits", "Size Trait Max", 200, new ConfigDescription("Maximum size multiplier as percentage (200 = 2.0x).", new AcceptableValueRange<int>(100, 300)));
+
+		SizeTraitVariance = config("6. Traits", "Inheritance Variance", 10, new ConfigDescription("Random variance percentage when inheriting size from parents.", new AcceptableValueRange<int>(0, 50)));
+
+		SizeTraitMutationChance = config("6. Traits", "Mutation Chance", 10, new ConfigDescription("Percentage chance for a size mutation on birth.", new AcceptableValueRange<int>(0, 100)));
 
 		DebugLogging = config("4. Debug", "Enable Debug Logging", false, new ConfigDescription("Enable verbose logging for troubleshooting."), synchronizedSetting: false);
 		DebugLogging.SettingChanged += (_, _) => { LogInfo("Debug logging toggled."); };

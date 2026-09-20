@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 1.0.6
+- Added Size Trait system — tamed creatures get a random size, offspring inherit size from both parents with variance and mutation
+- Configurable size range (50%-200%), inheritance variance (0%-50%), mutation chance (0%-100%)
+
 ## 1.0.5
 - Added per-species search radius configuration (Population Check Range and Partner Check Range)
 - Updated to latest standalone ServerSync (single file, compression, fragmentation)
