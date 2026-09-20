@@ -45,9 +45,5 @@
 			<HintPath>$(VALHEIM_MANAGED)/UnityEngine.UI.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
 		</Reference>
-		<Reference Include="Jotunn">
-			<HintPath>$(BEPINEX_PATH)/plugins/ValheimModding-Jotunn/Jotunn.dll</HintPath>
-			<SpecificVersion>False</SpecificVersion>
-		</Reference>
 	</ItemGroup>
 </Project>

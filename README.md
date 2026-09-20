@@ -20,7 +20,7 @@ Works for both mammals (Wolves, Lox, Boars, Moose) and egg-layers (Chickens, Ask
 Moose uses the standard Tameable/Procreation components, so star upgrades apply to calves and carry over when they grow up.
 
 ### Server-Side Control
-Configuration is synced from the server using Jotunn's SynchronizationManager. Clients cannot change gameplay settings unless they are server admins.
+Configuration is locked by default and synced from the server using embedded ServerSync. Clients cannot change settings unless the server allows it.
 
 ### Breeding Limits (Optional)
 Configurable population cap per species. When enabled, breeding stops when the species limit is reached nearby. Supports Boars, Wolves, Lox, Chickens, Moose, and Asksvin.
@@ -69,9 +69,8 @@ A configuration file is generated at `BepInEx/config/DMT.breedingupgrades.cfg` a
 ## Installation
 
 1. Install [BepInEx](https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/)
-2. Install [Jotunn](https://valheim.thunderstore.io/package/ValheimModding/Jotunn/)
-3. Download and extract `BreedingUpgrades.dll` into your `BepInEx/plugins/` folder
-4. Launch the game to generate the config file
+2. Download and extract `BreedingUpgrades.dll` into your `BepInEx/plugins/` folder
+3. Launch the game to generate the config file
 
 ## Future Plans
 
@@ -80,7 +79,7 @@ Rare traits (speed, health, damage) beyond stars. Creatures can inherit mutation
 
 ## Credits
 - Original mod by **Dumba** (Discord: dumba7435)
-- Config sync powered by [Jotunn](https://github.com/ValheimModding/Jotunn)
+- ServerSync library by **Blitz**
 
 ## Buy Me a Coffee
 
@@ -90,8 +89,7 @@ If you enjoy this mod, consider buying me a coffee: [![Buy Me A Coffee](https://
 
 ### 1.0.4
 - Added configurable breeding limits per species (Boars, Wolves, Lox, Chickens, Moose, Asksvin)
-- Added config hot-reload — edit `.cfg` file while the game is running
-- Switched from ServerSync to Jotunn SynchronizationManager for config sync
+- Switched config sync to embedded ServerSync (v1.0.12)
 - Breeding limits now enabled by default, max range changed to 3-20
 - Cleaned the informative part of the mod
 

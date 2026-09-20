@@ -3,8 +3,7 @@
 
 ## 1.0.4
 - Added configurable breeding limits per species (Boars, Wolves, Lox, Chickens, Moose, Asksvin)
-- Added config hot-reload — edit `.cfg` file while the game is running
-- Switched from ServerSync to Jotunn SynchronizationManager for config sync
+- Switched config sync to embedded ServerSync (v1.0.12)
 - Breeding limits now enabled by default, max range changed to 3-20
 - Cleaned the informative part of the mod
 

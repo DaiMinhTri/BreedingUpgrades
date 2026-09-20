@@ -4,7 +4,6 @@
   "website_url": "https://github.com/DaiMinhTri/BreedingUpgrades",
   "description": "Gives offspring of your tamed creatures a rare chance to spawn with an extra star.",
   "dependencies": [
-    "denikson-BepInExPack_Valheim-5.4.2350",
-    "ValheimModding-Jotunn-2.29.1"
+    "denikson-BepInExPack_Valheim-5.4.2350"
   ]
 }

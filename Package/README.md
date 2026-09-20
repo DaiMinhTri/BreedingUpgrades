@@ -22,7 +22,7 @@ Moose uses the standard Tameable/Procreation components, so star upgrades apply 
 ### Server-Side Control
 Configuration is locked by default and synced from the server using embedded ServerSync. Clients cannot change settings unless the server allows it.
 
-### Breeding Limits (Optional)
+### Breeding Limits (On by Default)
 Configurable population cap per species. When enabled, breeding stops when the species limit is reached nearby. Supports Boars, Wolves, Lox, Chickens, Moose, and Asksvin.
 
 ### Config Hot-Reload
@@ -90,7 +90,8 @@ If you enjoy this mod, consider buying me a coffee: [![Buy Me A Coffee](https://
 
 ### 1.0.4
 - Added configurable breeding limits per species (Boars, Wolves, Lox, Chickens, Moose, Asksvin)
-- Added config hot-reload — edit `.cfg` file while the game is running
+- Switched config sync to embedded ServerSync (v1.0.12)
+- Breeding limits now enabled by default, max range changed to 3-20
 - Cleaned the informative part of the mod
 
 ### 1.0.3
